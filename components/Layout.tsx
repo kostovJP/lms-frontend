@@ -1,4 +1,4 @@
-// components/Layout.tsx
+//components/Layout.tsx/
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
