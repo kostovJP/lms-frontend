@@ -32,6 +32,7 @@ export default function ResetPasswordPage() {
       console.log("Resetting password to:", data.password);
       toast.success("Password reset successful (mock)");
     } catch (error) {
+      console.error(error);
       toast.error("Password reset failed.");
     }
   };
