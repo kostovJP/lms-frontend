@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
+import Link from "next/link";
 // import { useMutation } from "@apollo/client"; // Uncomment when you integrate mutation
 // import { LOGIN_USER } from "@/graphql/mutations"; // Replace with actual path
 
@@ -58,8 +59,9 @@ export default function LoginPage() {
       <h2 className="text-2xl font-semibold mb-6 text-center text-black">Login</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-black">
         <div>
-          <label className="block text-sm font-medium">Email</label>
+          <label className="block text-sm font-medium" htmlFor="email">Email</label>
           <input
+            id = "email"
             type="email"
             {...register("email")}
             className="mt-1 w-full border px-3 py-2 rounded-md focus:outline-none focus:ring focus:border-blue-500"
@@ -70,8 +72,9 @@ export default function LoginPage() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium">Password</label>
+          <label className="block text-sm font-medium" htmlFor="pass">Password</label>
           <input
+            id = "pass"
             type="password"
             {...register("password")}
             className="mt-1 w-full border px-3 py-2 rounded-md focus:outline-none focus:ring focus:border-blue-500"
@@ -80,13 +83,23 @@ export default function LoginPage() {
             <p className="text-red-500 text-sm">{errors.password.message}</p>
           )}
         </div>
-
+          <Link href="/forgot-password" className="flex text-xs text-blue-500 hover:text-blue-700 hover:underline justify-end">
+            Forgot Password
+          </Link>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 mt-5"
         >
           Login
         </button>
+        <div>
+          <label htmlFor="regPage" className="text-sm text-gray-500">
+            Do not have an account?
+          </label>
+          <Link href="/register" className="d-inline-flex ml-35.5 bg-blue-600 hover:bg-blue-700 py-2 px-5 rounded-md text-white">
+            Register
+          </Link>
+        </div>
       </form>
     </div>
   );
